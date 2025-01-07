@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/frontend/src/assets/css/novosClientes.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clientes</title>
+</head>
+<style>
+    body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+}
+
+form {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+input {
+    display: block;
+    margin-bottom: 10px;
+    padding: 10px;
+    width: 300px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.Todos-clientes div {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+
+}
+
+</style>
+<body>
+    <h1>Seus Clientes</h1>
+    <form id="form-clientes" onsubmit="adicionarCliente(event)">
+        <h2>Cadastrar Cliente</h2>
+        <input type="text" id="nome" placeholder="Nome" required>
+        <input type="text" id="cpf" placeholder="CPF" required>
+        <input type="text" id="endereco" placeholder="Endereço" required>
+        <input type="date" id="nascimento" placeholder="Nascimento" required>
+        <input type="text" id="cidade" placeholder="Cidade" required>
+        <button type="submit">Adicionar Cliente</button>
+    </form>
+
+    <div class="Todos-clientes"></div>
+
+    <script type="module" src="../assets/js/clientes.js"></script>
+</body>
+</html>

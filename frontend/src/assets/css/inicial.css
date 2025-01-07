@@ -1,0 +1,56 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+  }
+  
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 20px;
+    height: 100vh;
+    padding: 20px;
+  }
+  
+  .section {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .section h1, .section h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #007bff;
+  }
+  
+  .section p {
+    margin: 10px 0;
+    line-height: 1.6;
+  }
+  
+  .tabela-precos {
+    grid-column: 1 / 2;
+  }
+  
+  .compra {
+    grid-column: 2 / 3;
+  }
+  
+  .total {
+    margin-top: 20px;
+    padding: 10px;  
+    background-color: #f1f1f1;
+    border-radius: 8px;
+  }
+  
+  .total h2 {
+    font-size: 1.2em;
+    margin-bottom: 5px;
+  }
+  
+  
