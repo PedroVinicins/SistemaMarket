@@ -8,55 +8,9 @@
     <title>Clientes</title>
 </head>
 <style>
-    body {
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f9f9f9;
-    color: #333;
-}
-
-h1 {
-    color: #333;
-    text-align: center;
-}
-
-form {
-    display: grid;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    padding: 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-input {
-    display: block;
-    margin-bottom: 10px;
-    padding: 10px;
-    width: 300px;
-}
-
-button {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-}
-
-.Todos-clientes div {
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin-bottom: 10px;
-
-}
 
 </style>
 <body>
-    <h1>Seus Clientes</h1>
     <form id="form-clientes" onsubmit="adicionarCliente(event)">
         <h2>Cadastrar Cliente</h2>
         <input type="text" id="nome" placeholder="Nome" required>
@@ -66,7 +20,8 @@ button {
         <input type="text" id="cidade" placeholder="Cidade" required>
         <button type="submit">Adicionar Cliente</button>
     </form>
-
+    <h1>Seus clientes</h1>
+    
     <div class="Todos-clientes"></div>
 
     <script type="module" src="../assets/js/clientes.js"></script>
