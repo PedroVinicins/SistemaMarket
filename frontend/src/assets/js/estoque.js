@@ -4,22 +4,22 @@ document.getElementById('form-estoque').addEventListener('submit' , async functi
     const nome = document.getElementById('nome').value;
     const preco = document.getElementById('preco').value;
     const validade = document.getElementById('validade').value;
-    const Quantidade = document.getElementById('Quantidade').value;
+    const quantidade = document.getElementById('quantidade').value;
 
     const response = await fetch('http://localhost:3000/estoque', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json' 
         },
-        body: JSON.stringify({ nome, preco, validade, Quantidade})
+        body: JSON.stringify({ nome, preco, validade, quantidade})
     });
 
     if (response.ok) {
-        alert('Cliente adicionado com sucesso!');
-        document.getElementById('form-clientes').reset();
+        alert('Produto adicionado com sucesso!');
+        document.getElementById('form-estoque').reset();
         carregarProdutos(); // Atualiza a lista de 
     } else {
-        alert('Erro ao adicionar cliente.');
+        alert('Erro ao adicionar produto.');
     }
 
 });
@@ -35,10 +35,9 @@ async function carregarProdutos() {
         const produtosDiv = document.createElement('div');
         produtosDiv.innerHTML = `
             <h1>${produtos.nome}</h1>
-            <p>CPF: ${produtos.cpf}</p>
-            <p>Endereço: ${produtos.endereco}</p>
-            <p>Data de Nascimento: ${produtos.nascimento}</p>
-            <p>Cidade: ${produtos.cidade}</p>
+            <p>preco: ${produtos.preco}</p>
+            <p>validade: ${produtos.validade}</p>
+            <p>quantidade: ${produtos.quantidade}</p>
         `;
         container.appendChild(produtosDiv);
     });

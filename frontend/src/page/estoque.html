@@ -6,24 +6,24 @@
     <title>Estoque</title>
 </head>
 <body>
-    <div class="add-produtos">
+    <form id="form-estoque" onsubmit="adicionarProduto(event)">
         <h1>Adicionar Produtos</h1>
-        <form action="">
-        <h1>Adicionar Produtos</h1>m
-        <form id="form-estoque" >
-            <label for="nome">Nome</label>
-            <input type="text" name="nome" id="nome">
-            <label for="preco">Preço</label>
-            <input type="text" name="preco" id="preco">
-            <label for="validade">validade</label>
-            <input type="date" name="validade" id="validade">
-            <label for="quantidade">Quantidade</label>
-            <input type="number" name="quantidade" id="quantidade">
-            <button type="submit">Adicionar</button>
-        </form>
-    </div>
+        <label for="nome">Nome</label>
+        <input type="text" id="nome" name="nome" placeholder="Nome" required>
+        
+        <label for="preco">Preço</label>
+        <input type="text" id="preco" name="preco" placeholder="Preço" required>
+        
+        <label for="validade">Validade</label>
+        <input type="date" id="validade" name="validade" required>
+        
+        <label for="quantidade">Quantidade</label>
+        <input type="number" id="quantidade" name="quantidade" placeholder="Quantidade" required>
+        
+        <button type="submit">Adicionar</button>
+    </form>
 
     <div class="tabela-de-estoque"></div>
-    </div>
+    <script src="../assets/js/estoque.js"></script>
 </body>
 </html>

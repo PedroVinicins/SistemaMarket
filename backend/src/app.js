@@ -19,6 +19,7 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../../frontend/src')));
 
 
+
 // Rota para adicionar cliente
 app.post('/clientes', (req, res) => {
     const { nome, cpf, endereco, nascimento, cidade } = req.body;
@@ -50,8 +51,8 @@ app.get('/clientes', (req, res) => {
 
 // Rota principal para servir o arquivo HTML
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../../frontend/src/page/novosClientes.html'));
-});
+    res.sendFile(path.join(__dirname, '../../frontend/src/page/novosClientes.html'));
+  });
 
 app.listen(PORT, () => {
     console.log(`Servidor rodando em http://localhost:${PORT}`);
