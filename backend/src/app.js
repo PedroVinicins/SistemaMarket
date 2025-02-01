@@ -24,7 +24,7 @@ app.use(express.static(path.join(__dirname, '../../frontend/src')));
 app.post('/clientes', (req, res) => {
     const { nome, cpf, endereco, nascimento, cidade } = req.body;
 
-    const sql = "INSERT INTO cadastraclientes (nome, cpf, endereco, nascimento, cidade) VALUES (?, ?, ?, ?, ?)";
+    const sql = "INSERT INTO clintescadastrados (nome, cpf, endereco, nascimento, cidade) VALUES (?, ?, ?, ?, ?)";
 
     db.query(sql, [nome, cpf, endereco, nascimento, cidade], (err, result) => {
         if (err) {
@@ -38,7 +38,7 @@ app.post('/clientes', (req, res) => {
 
 // Rota para listar clientes
 app.get('/clientes', (req, res) => {
-    const sql = "SELECT * FROM cadastraclientes";
+    const sql = "SELECT * FROM clintescadastrados";
     db.query(sql, (err, results) => {
         if (err) {
             console.error('Erro ao listar clientes:', err);

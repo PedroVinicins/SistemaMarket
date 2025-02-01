@@ -35,6 +35,7 @@ async function carregarClientes() {
 
     clientes.forEach(cliente => {
         const clienteDiv = document.createElement('div');
+        clienteDiv.classList.add('cliente');
         clienteDiv.innerHTML = `
             <h1>${cliente.nome}</h1>
             <p>CPF: ${cliente.cpf}</p>

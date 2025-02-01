@@ -1,11 +1,11 @@
 const express = require('express');
-const mysql = require('mysql2');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const path = require('path');
 
 const app = express();
 const PORT = 3000; // Porta padrão sem segurança
+const db = require('../models/db');
 
 // Configurar middleware
 app.use(cors());
@@ -15,18 +15,11 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../../frontend/src')));
 
 // conecxao com banco de dados
-const db = mysql.createPool({
-  host: 'localhost',
-  user: 'root',
-  password: 'rootpedro',
-  database: 'estoque',
-  connectionLimit: 10
-});
 
 app.post('/estoque', (req, res) => {
     const { nome, preco, validade, quantidade } = req.body;
 
-    const sql = "INSERT INTO tabeladeestoque (nome, preco, validade, quantidade) VALUES (?, ?, ?, ?)";
+    const sql = "INSERT INTO estoque (nome, preco, validade, quantidade) VALUES (?, ?, ?, ?)";
    
     db.query(sql, [nome, preco, validade, quantidade], (err, result) => {
         if (err) {
@@ -40,7 +33,7 @@ app.post('/estoque', (req, res) => {
 
 // Rota para listar seus produtos
 app.get('/estoque', (req, res) => {
-    const sql = "SELECT * FROM tabeladeestoque";
+    const sql = "SELECT * FROM estoque";
     db.query(sql, (err, results) => {
         if (err) {
             console.error('Erro ao listar produto:', err);

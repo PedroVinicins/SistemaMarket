@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/frontend/src/assets/css/novosClientes.css">
@@ -8,22 +8,146 @@
     <title>Clientes</title>
 </head>
 <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 16px;
+    color: #000;
+    background-color: #dce5e7be;
+    line-height: 1.6;
+    font-family: 'Poppins', sans-serif; /* Poppins, já usado nos seus projetos */
+}
+
+h1 {
+    text-align: center;
+    color: rgb(255, 255, 255);
+}
+
+h2 {
+    color: rgb(0, 0, 0);
+}
+
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    height: 100vh;
+    color: white;
+    padding: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.268);
+}
+
+button {
+    width: 180px;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+    margin: 5px;
+    background-color: #0044ff;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #0033cc;
+}
+
+input {
+    width: 100%;
+    max-width: 270px;
+    padding: 12px;
+    margin: 7px;
+    color: black;
+    background-color: rgba(255, 255, 255, 0.6);
+    border: solid 1px black;
+    outline: none;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.lista-clientes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 700px;
+    height: 100%;
+    gap: 12px;
+    background-color: rgb(0, 166, 255);
+    backdrop-filter: blur(10px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.lista-clientes::-webkit-scrollbar {
+    width: 8px;
+}
+
+.lista-clientes::-webkit-scrollbar-thumb {
+    background-color: #555;
+    border-radius: 10px;
+}
+
+.lista-clientes::-webkit-scrollbar-track {
+    background-color: #222;
+}
+
+.cliente {
+    width: 90vh;
+    background-color: rgba(54, 54, 54, 0.37);
+    padding: 10px;
+    margin: 5px;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.cliente:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.268);
+}
 
 </style>
+
 <body>
-    <form id="form-clientes" onsubmit="adicionarCliente(event)">
-        <h2>Cadastrar Cliente</h2>
-        <input type="text" id="nome" placeholder="Nome" required>
-        <input type="text" id="cpf" placeholder="CPF" required>
-        <input type="text" id="endereco" placeholder="Endereço" required>
-        <input type="date" id="nascimento" placeholder="Nascimento" required>
-        <input type="text" id="cidade" placeholder="Cidade" required>
-        <button type="submit">Adicionar Cliente</button>
-    </form>
-    <h1>Seus clientes</h1>
-    
-    <div class="Todos-clientes"></div>
+    <section>
+        <form id="form-clientes" onsubmit="adicionarCliente(event)">
+            <h2>Cadastrar Cliente</h2>
+            <input type="text" id="nome" placeholder="Nome" required>
+            <input type="text" id="cpf" placeholder="CPF" required>
+            <input type="text" id="endereco" placeholder="Endereço" required>
+            <input type="text" id="cidade" placeholder="Cidade" required>
+            <input type="date" id="nascimento" placeholder="Nascimento" required>
+            <button type="submit">Adicionar Cliente</button>
+        </form>
+
+        <div class="lista-clientes">
+            <h1>Seus clientes</h1>
+            <div class="Todos-clientes"></div>
+        </div>
+    </section>
+
 
     <script type="module" src="../assets/js/clientes.js"></script>
 </body>
+
 </html>
