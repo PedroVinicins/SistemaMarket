@@ -3,4 +3,4 @@
 ## Project setup
 ```
 npm install
-``` npm start
+npm start
