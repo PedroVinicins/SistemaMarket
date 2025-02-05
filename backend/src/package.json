@@ -2,9 +2,9 @@
   "name": "sistema-de-mercado",
   "version": "1.0.0",
   "description": "Sistema de mercado desenvolvido com Node.js e Express",
-  "main": "app.js",
+  "main": " db.js",
   "scripts": {
-    "start": "npx nodemon app.js"
+    "start": "npx nodemon"
   },
   "keywords": [
     "mercado",

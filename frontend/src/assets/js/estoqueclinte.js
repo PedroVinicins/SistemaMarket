@@ -33,8 +33,9 @@ async function carregarProdutos() {
 
     produtos.forEach(produtos => {
         const produtosDiv = document.createElement('div');
+        produtosDiv.classList.add('estoque');
         produtosDiv.innerHTML = `
-            <h1>${produtos.nome}</h1>
+            <h3>${produtos.nome}</h3>
             <p>preco: ${produtos.preco}</p>
             <p>validade: ${produtos.validade}</p>
             <p>quantidade: ${produtos.quantidade}</p>

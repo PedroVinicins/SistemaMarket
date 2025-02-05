@@ -5,25 +5,153 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Estoque</title>
 </head>
-<body>
-    <form id="form-estoque" onsubmit="adicionarProduto(event)">
-        <h1>Adicionar Produtos</h1>
-        <label for="nome">Nome</label>
-        <input type="text" id="nome" name="nome" placeholder="Nome" required>
-        
-        <label for="preco">Preço</label>
-        <input type="text" id="preco" name="preco" placeholder="Preço" required>
-        
-        <label for="validade">Validade</label>
-        <input type="date" id="validade" name="validade" required>
-        
-        <label for="quantidade">Quantidade</label>
-        <input type="number" id="quantidade" name="quantidade" placeholder="Quantidade" required>
-        
-        <button type="submit">Adicionar</button>
-    </form>
+<style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    <div class="tabela-de-estoque"></div>
+body {
+    font-size: 16px;
+    color: #000;
+    background-color: #dce5e7be;
+    line-height: 1.6;
+    font-family: 'Poppins', sans-serif; /* Poppins, já usado nos seus projetos */
+}
+
+h1 {
+    text-align: center;
+    color: rgb(0, 0, 0);
+}
+
+h2 {
+    color: rgb(0, 0, 0);
+}
+
+h3{
+    text-align: center;
+    color: white;
+    font-size: 1.5rem;
+}
+    form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.268);
+}
+
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    height: 100vh;
+    color: white;
+    padding: 20px;
+}
+
+button {
+    width: 180px;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+    margin: 5px;
+    background-color: #0044ff;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #0033cc;
+}
+
+label {
+    color: rgb(0, 0, 0);
+}
+
+input {
+    width: 100%;
+    max-width: 270px;
+    padding: 12px;
+    margin: 7px;
+    color: rgb(0, 0, 0);
+    background-color: rgba(255, 255, 255, 0.6);
+    border: solid 1px black;
+    outline: none;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.lista-de-estoque {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 700px;
+    height: 100%;
+    gap: 12px;
+    background-color: rgba(255, 170, 0, 0.881);
+    backdrop-filter: blur(10px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.lista-de-estoque::-webkit-scrollbar {
+    width: 8px;
+}
+
+.lista-de-estoque::-webkit-scrollbar-thumb {
+    background-color: #555;
+    border-radius: 10px;
+}
+
+.lista-estoque::-webkit-scrollbar-track {
+    background-color: #222;
+}
+
+.estoque {
+    width: 90vh;
+    background-color: rgba(54, 54, 54, 0.37);
+    padding: 10px;
+    margin: 5px;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.estoque:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.268);
+}
+
+</style>
+<body>
+    <section>
+
+        <form id="form-estoque" onsubmit="adicionarProduto(event)">
+            <h1>Adicionar Produtos</h1>
+            <input type="text" id="nome" name="nome" placeholder="Nome do Produto" required>
+            <input type="text" id="preco" name="preco" placeholder="Valor do Produto" required>
+            <input type="date" id="validade" name="Data de validade do Produto" required>
+            <input type="number" id="quantidade" name="quantidade" placeholder="A Quantidade em estoque do Produto" required>
+            
+            <button type="submit">Adicionar</button>
+        </form>
+        
+        <div class="lista-de-estoque">
+            <h2>Seus Protudos</h2>
+            <div class="tabela-de-estoque"></div>
+        </div>
+    </section>
     <script src="../assets/js/estoqueclinte.js"></script>
 </body>
 </html>
