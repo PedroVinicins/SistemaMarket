@@ -3,4 +3,5 @@
 ## Project setup
 ```
 npm install
-npm start
+npm start app.js // clientes
+npm start estoque.js // estoque

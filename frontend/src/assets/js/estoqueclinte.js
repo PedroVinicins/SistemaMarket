@@ -1,48 +1,56 @@
-document.getElementById('form-estoque').addEventListener('submit' , async function name(a) {
-    a.preventDefault();
-
-    const nome = document.getElementById('nome').value;
-    const preco = document.getElementById('preco').value;
-    const validade = document.getElementById('validade').value;
-    const quantidade = document.getElementById('quantidade').value;
-
-    const response = await fetch('http://localhost:3000/estoque', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json' 
-        },
-        body: JSON.stringify({ nome, preco, validade, quantidade})
-    });
-
-    if (response.ok) {
-        alert('Produto adicionado com sucesso!');
-        document.getElementById('form-estoque').reset();
-        carregarProdutos(); // Atualiza a lista de 
-    } else {
-        alert('Erro ao adicionar produto.');
-    }
-
-});
-
 async function carregarProdutos() {
-    const response = await fetch('http://localhost:3000/estoque');
-    const produtos = await response.json();
+    try {
+        const response = await fetch('http://localhost:3000/estoque');
+        if (!response.ok) throw new Error('Erro ao carregar produtos');
+        
+        const produtos = await response.json();
+        const container = document.getElementById('tabela-de-estoque');
+        
+        if (!container) return;
 
-    const container = document.querySelector('.tabela-de-estoque');
-    container.innerHTML = ''; // Limpa a lista anterior
+        container.innerHTML = '';
 
-    produtos.forEach(produtos => {
-        const produtosDiv = document.createElement('div');
-        produtosDiv.classList.add('estoque');
-        produtosDiv.innerHTML = `
-            <h3>${produtos.nome}</h3>
-            <p>preco: ${produtos.preco}</p>
-            <p>validade: ${produtos.validade}</p>
-            <p>quantidade: ${produtos.quantidade}</p>
-        `;
-        container.appendChild(produtosDiv);
-    });
+        if (produtos.length === 0) {
+            container.innerHTML = '<p>Nenhum produto cadastrado</p>';
+            document.getElementById('total-value').textContent = '0.00';
+            return;
+        }
+
+        produtos.forEach(produto => {
+            // Convert price to number if it's a string
+            const preco = typeof produto.preco === 'string' 
+                ? parseFloat(produto.preco.replace(',', '.')) 
+                : Number(produto.preco);
+            
+            const produtoDiv = document.createElement('div');
+            produtoDiv.classList.add('estoque-item');
+            produtoDiv.innerHTML = `
+                <h3>${produto.nome}</h3>
+                <p>Preço: R$ ${preco.toFixed(2)}</p>
+                <p>Validade: ${new Date(produto.validade).toLocaleDateString('pt-BR')}</p>
+                <p>Quantidade: ${produto.quantidade}</p>
+                <p>Valor total: R$ ${(preco * produto.quantidade).toFixed(2)}</p>
+            `;
+            container.appendChild(produtoDiv);
+        });
+
+        const valorTotal = calcularValorTotal(produtos);
+        document.getElementById('total-value').textContent = valorTotal.toFixed(2);
+    } catch (error) {
+        console.error('Erro ao carregar produtos:', error);
+        document.getElementById('tabela-de-estoque').innerHTML = 
+            '<p>Erro ao carregar produtos. Recarregue a página.</p>';
+    }
 }
 
-// Carrega os clientes ao carregar a página
+function calcularValorTotal(produtos) {
+    return produtos.reduce((total, produto) => {
+        // Convert price to number if it's a string
+        const preco = typeof produto.preco === 'string' 
+            ? parseFloat(produto.preco.replace(',', '.')) 
+            : Number(produto.preco);
+        return total + (preco * produto.quantidade);
+    }, 0);
+}
+
 window.onload = carregarProdutos;
